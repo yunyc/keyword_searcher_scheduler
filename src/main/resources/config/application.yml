@@ -133,7 +133,7 @@ spring:
         binder:
           replicationFactor: 1
           auto-create-topics: true
-          brokers: localhost:9092
+          brokers: 13.115.79.152:9092
       bindings:
         binding-in-sse:
           destination: sse-topic
@@ -212,11 +212,12 @@ spring:
       client:
         provider:
           oidc:
-            issuer-uri: http://localhost:9080/realms/jhipster
+            issuer-uri: https://dev-m0hzzz18yhxvgefm.us.auth0.com/
+            # issuer-uri: http://localhost:9080/realms/jhipster
         registration:
           oidc:
-            client-id: internal
-            client-secret: internal
+            client-id: ntr9njrIaGnY6DtxbP4RpQVbU2mOdBWO
+            client-secret: 8c5NMXz-RW1cyu1bb2CnAH_ET8txGalaiTRbsyJeEQTzdIDfKz91mAdY-kAJYP5m
             scope: openid, profile, email, offline_access # last one for refresh tokens
 
 server:
@@ -267,8 +268,17 @@ jhipster:
   security:
     oauth2:
       audience:
-        - account
-        - api://default
+        - https://dev-m0hzzz18yhxvgefm.us.auth0.com/api/v2/
+kafka:
+  bootstrap-servers: 13.115.79.152:9092
+  consumer:
+    key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    group.id: scheduler
+    auto.offset.reset: earliest
+  producer:
+    key.serializer: org.apache.kafka.common.serialization.StringSerializer
+    value.serializer: org.apache.kafka.common.serialization.StringSerializer
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class

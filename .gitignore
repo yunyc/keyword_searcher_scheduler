@@ -4,6 +4,10 @@
 /build/resources/main/static/**
 /src/test/javascript/coverage/
 
+# 커스텀
+src/main/resources/config/bootstrap-prod.yml
+src/main/resources/config/application-prod.yml
+
 ######################
 # Node
 ######################
