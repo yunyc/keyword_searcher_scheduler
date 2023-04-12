@@ -13,6 +13,7 @@ import lombok.Setter;
 public class AlarmChanged {
 
     private Long AlarmId;
+    private String userId;
     private String eventType;
     private String keyword;
     private List<String> excludeUrl = new ArrayList<>();

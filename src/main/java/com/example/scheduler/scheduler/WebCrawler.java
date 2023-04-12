@@ -50,7 +50,13 @@ public class WebCrawler {
 
         for (Element element : elements) {
             log.info("단어 저장");
-            NoticeChanged noticeChanged = new NoticeChanged(element.text(), element.attr("href"), null, alarmChanged.getAlarmId());
+            NoticeChanged noticeChanged = new NoticeChanged(
+                element.text(),
+                alarmChanged.getUserId(),
+                element.attr("href"),
+                null,
+                alarmChanged.getAlarmId()
+            );
             schedulerProducer.sendNoticeCreateEvent(noticeChanged);
         }
     }
