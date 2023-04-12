@@ -13,6 +13,5 @@ public class NoticeChanged {
     private String content;
     private String userId;
     private String siteUrl;
-    private LocalDate crawledDate;
     private Long alarmId;
 }
