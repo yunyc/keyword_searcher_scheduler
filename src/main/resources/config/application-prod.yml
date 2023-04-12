@@ -22,9 +22,10 @@ logging:
 eureka:
   instance:
     prefer-ip-address: true
+    ip-address: 43.207.245.15
   client:
     service-url:
-      defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
+      defaultZone: http://admin:${jhipster.registry.password}@13.115.79.152:8761/eureka/
 
 management:
   metrics:
@@ -44,7 +45,7 @@ spring:
         initial-interval: 1000
         max-interval: 2000
         max-attempts: 100
-      uri: http://admin:${jhipster.registry.password}@localhost:8761/config
+      uri: http://admin:${jhipster.registry.password}@13.115.79.152:8761/config
       # name of the config server's property source (file.yml) that we want to use
       name: scheduler
       profile: prod
@@ -52,9 +53,9 @@ spring:
       # it can be set to any label, branch or commit of the configuration source Git repository
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mariadb://localhost:3306/scheduler?useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password:
+    url: jdbc:mariadb://database-2.chevoec5mped.ap-northeast-1.rds.amazonaws.com:3306/scheduler
+    username: yeomin1024
+    password: btv4ue12
     hikari:
       poolName: Hikari
       auto-commit: false
