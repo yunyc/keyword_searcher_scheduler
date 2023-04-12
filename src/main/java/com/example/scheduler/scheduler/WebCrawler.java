@@ -50,6 +50,8 @@ public class WebCrawler {
 
         for (Element element : elements) {
             log.info("단어 저장");
+            log.info("단어 " + element.text());
+            log.info("단어 " + element.attr("href"));
             NoticeChanged noticeChanged = new NoticeChanged(
                 element.text(),
                 alarmChanged.getUserId(),
