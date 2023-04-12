@@ -40,9 +40,10 @@ public class SchedulerProducerImpl implements SchedulerProducer {
     @Override
     public void sendNoticeCreateEvent(NoticeChanged noticeChanged)
         throws ExecutionException, InterruptedException, JsonProcessingException {
-        log.info("sendNoticeCreateEvent start");
+        log.info("메서드 sendNoticeCreateEvent start");
         String message = objectMapper.writeValueAsString(noticeChanged);
         producer.send(new ProducerRecord<>(TOPIC_ALARM, message));
+        log.info("메서드 sendNoticeCreateEvent end");
     }
 
     @PreDestroy
