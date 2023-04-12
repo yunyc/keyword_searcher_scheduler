@@ -52,7 +52,7 @@ public class SchedulerServiceImpl implements SchedulerService {
         String eventType = alarmChanged.getEventType();
         switch (eventType) {
             case "NEW_ALARM":
-                createScheduler(alarmChanged);
+                //createScheduler(alarmChanged);
                 schedulerProducer.sendNoticeCreateEvent(new NoticeChanged("content", "id", "site", null, 1L));
                 break;
             case "DELETE_ALARM":
