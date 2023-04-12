@@ -57,7 +57,7 @@ public class WebCrawler {
                 null,
                 alarmChanged.getAlarmId()
             );
-            schedulerProducer.sendNoticeCreateEvent(noticeChanged);
+            schedulerProducer.sendNoticeCreateEvent(new NoticeChanged("content", "id", "site", null, 1L));
         }
     }
 }
