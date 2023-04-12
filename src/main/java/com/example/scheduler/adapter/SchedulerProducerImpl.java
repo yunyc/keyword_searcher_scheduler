@@ -42,6 +42,7 @@ public class SchedulerProducerImpl implements SchedulerProducer {
         throws ExecutionException, InterruptedException, JsonProcessingException {
         log.info("메서드 sendNoticeCreateEvent start");
         String message = objectMapper.writeValueAsString(noticeChanged);
+        log.info("메시지: " + message);
         producer.send(new ProducerRecord<>(TOPIC_ALARM, message));
         log.info("메서드 sendNoticeCreateEvent end");
     }
