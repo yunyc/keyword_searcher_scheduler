@@ -14,4 +14,6 @@ public class NoticeChanged {
     private String userId;
     private String siteUrl;
     private Long alarmId;
+
+    public NoticeChanged() {}
 }
