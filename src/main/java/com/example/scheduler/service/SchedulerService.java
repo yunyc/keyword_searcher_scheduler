@@ -1,6 +1,8 @@
 package com.example.scheduler.service;
 
 import com.example.scheduler.domain.event.AlarmChanged;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import java.util.concurrent.ExecutionException;
 import org.quartz.SchedulerException;
 
 public interface SchedulerService {
@@ -10,5 +12,6 @@ public interface SchedulerService {
 
     void deleteScheduler(AlarmChanged alarmChanged) throws SchedulerException;
 
-    void processAlarmChanged(AlarmChanged alarmChanged) throws SchedulerException, ClassNotFoundException, NoSuchMethodException;
+    void processAlarmChanged(AlarmChanged alarmChanged)
+        throws SchedulerException, ClassNotFoundException, NoSuchMethodException, ExecutionException, InterruptedException, JsonProcessingException;
 }

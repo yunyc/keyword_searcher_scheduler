@@ -2,8 +2,11 @@ package com.example.scheduler.service.Impl;
 
 import com.example.scheduler.adapter.SchedulerProducer;
 import com.example.scheduler.domain.event.AlarmChanged;
+import com.example.scheduler.domain.event.NoticeChanged;
 import com.example.scheduler.scheduler.WebCrawler;
 import com.example.scheduler.service.SchedulerService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import java.util.concurrent.ExecutionException;
 import org.quartz.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,11 +47,13 @@ public class SchedulerServiceImpl implements SchedulerService {
     }
 
     @Override
-    public void processAlarmChanged(AlarmChanged alarmChanged) throws SchedulerException, ClassNotFoundException, NoSuchMethodException {
+    public void processAlarmChanged(AlarmChanged alarmChanged)
+        throws SchedulerException, ClassNotFoundException, NoSuchMethodException, ExecutionException, InterruptedException, JsonProcessingException {
         String eventType = alarmChanged.getEventType();
         switch (eventType) {
             case "NEW_ALARM":
                 createScheduler(alarmChanged);
+                schedulerProducer.sendNoticeCreateEvent(new NoticeChanged("content", "id", "site", null, 1L));
                 break;
             case "DELETE_ALARM":
                 deleteScheduler(alarmChanged);
