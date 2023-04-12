@@ -6,6 +6,7 @@ import com.example.scheduler.domain.event.NoticeChanged;
 import com.example.scheduler.scheduler.WebCrawler;
 import com.example.scheduler.service.SchedulerService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import java.time.LocalDate;
 import java.util.concurrent.ExecutionException;
 import org.quartz.*;
 import org.slf4j.Logger;
@@ -53,7 +54,7 @@ public class SchedulerServiceImpl implements SchedulerService {
         switch (eventType) {
             case "NEW_ALARM":
                 //createScheduler(alarmChanged);
-                schedulerProducer.sendNoticeCreateEvent(new NoticeChanged("content", "id", "site", null, 1L));
+                schedulerProducer.sendNoticeCreateEvent(new NoticeChanged("content", "id", "site", LocalDate.now(), 1L));
                 break;
             case "DELETE_ALARM":
                 deleteScheduler(alarmChanged);
