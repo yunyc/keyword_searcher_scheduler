@@ -37,8 +37,8 @@ public class WebCrawler {
         String[] keywordList = alarmChanged.getKeyword().split(","); // 추출할 키워드
         String selector = "a";
 
-        for (String excluedurl : alarmChanged.getExcludeUrl()) {
-            selector = selector + ":not([href*='" + excluedurl + "'])";
+        for (String excludeUrl : alarmChanged.getExcludeUrl()) {
+            selector = selector + ":not([href*='" + excludeUrl + "'])";
         }
 
         for (String keyword : keywordList) {
@@ -58,6 +58,7 @@ public class WebCrawler {
                 element.attr("href"),
                 alarmChanged.getAlarmId()
             );
+            alarmChanged.getExcludeUrl().add(element.attr("href"));
             schedulerProducer.sendNoticeCreateEvent(noticeChanged);
         }
     }
